@@ -23,8 +23,10 @@ console.log(booleanDoublePress);
             case 82:
             if(booleanDoublePress == true){
                 booleanDoublePress == !booleanDoublePress;
+                console.log(booleanDoublePress);
             } else {
                 booleanDoublePress == !booleanDoublePress;
+                console.log(booleanDoublePress);
             }
             break;
 
