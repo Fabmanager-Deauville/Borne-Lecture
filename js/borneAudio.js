@@ -1,5 +1,5 @@
 // Lancement du son selon la touche du clavier appuyée
-var booleanDoublePress = false;
+var booleanDoublePress = true;
 console.log(booleanDoublePress);
 
       window.onkeyup = function(e) {
@@ -21,15 +21,15 @@ console.log(booleanDoublePress);
 
       //Touche R = record
             case 82:
-            if(booleanDoublePress == true){
-                booleanDoublePress == !booleanDoublePress;
-                console.log(booleanDoublePress);
-            } else {
-                booleanDoublePress == !booleanDoublePress;
-                console.log(booleanDoublePress);
-            }
+                if(booleanDoublePress == true){
+                    booleanDoublePress = !booleanDoublePress;
+                    console.log(booleanDoublePress);
+                } else {
+                    booleanDoublePress = !booleanDoublePress;
+                    console.log(booleanDoublePress);
+                }
             break;
+            default:
 
-             default:
          }
       }
