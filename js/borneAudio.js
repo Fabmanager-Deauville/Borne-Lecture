@@ -1,26 +1,33 @@
-// 4- click au CLAVIER
-window.onkeyup = function(e) {
+// Lancement du son selon la touche du clavier appuyée
+var booleanDoublePress = false;
+console.log(booleanDoublePress);
 
-   switch (e.keyCode) {
-     case 65:
-        console.log("la touche a est appuyée");
-        document.getElementById('livre1').play();
-       break;
-      case 90:
-        console.log("la touche z est appuyée");
-        document.getElementById('livre2').play();
-       break;
+      window.onkeyup = function(e) {
 
-     case 69:
-        console.log("la touche e est appuyée");
-        document.getElementById('livre3').play();
-       break;
-       default:
-   }
-}
+         switch (e.keyCode) {
+           case 65:
+              console.log("la touche a est appuyée");
+              document.getElementById('livre1').play();
+             break;
+            case 90:
+              console.log("la touche z est appuyée");
+              document.getElementById('livre2').play();
+             break;
 
-navigator.mediaDevices.getUserMedia({ audio: true })
-  .then(stream => {
-    const mediaRecorder = new MediaRecorder(stream);
-    mediaRecorder.start();
-  });
+           case 69:
+              console.log("la touche e est appuyée");
+              document.getElementById('livre3').play();
+             break;
+
+      //Touche R = record
+            case 82:
+            if(booleanDoublePress == true){
+                booleanDoublePress == !booleanDoublePress;
+            } else {
+                booleanDoublePress == !booleanDoublePress;
+            }
+            break;
+
+             default:
+         }
+      }
