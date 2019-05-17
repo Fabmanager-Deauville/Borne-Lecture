@@ -5,6 +5,7 @@ window.onkeyup = function(e) {
      case 65:
         console.log("la touche a est appuyée");
         document.getElementById('livre1').play();
+
        break;
       case 90:
         console.log("la touche z est appuyée");
