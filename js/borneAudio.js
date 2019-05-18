@@ -29,6 +29,7 @@ while(onkeypress== 82 !=true){
 /////////////////////////////////////////////////Initialisation P5.JS//////////////////////////////////////////////
 var mic, recorder, soundFile;
 var state = 0;
+var numFichier = 0;
 
 function setup() {
   background(200);
@@ -51,7 +52,7 @@ function setup() {
   text('keyPress to record', 20, 20);
 }
 
-   Mousetrap.bind('r a', function(){
+   Mousetrap.bind(['r a', 'r z', 'r e'], function(){
       // make sure user enabled the mic
       if (state === 0 && mic.enabled) {
 
@@ -72,6 +73,7 @@ function setup() {
         text('Stopped', 20, 20);
         save(soundFile, 'test.wav');
         state == 0;
+        setup();
       }
   })
   Mousetrap.bind('a', function(e) {
