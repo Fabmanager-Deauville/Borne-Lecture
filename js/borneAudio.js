@@ -58,37 +58,20 @@ function setup() {
         state == 0;
       }
   })
-
 ////////////////////////////////Lancer le son quand on appuie sur a,z ou e/////////////////////////////////////////
-      window.onkeyup = function(e) {
-        switch (e.keyCode) {
-          case 65:
-             console.log("la touche a est appuyée");
-             document.getElementById('livre1').play();
-            break;
-           case 90:
-             console.log("la touche z est appuyée");
-             document.getElementById('livre2').play();
-            break;
 
-          case 69:
-             console.log("la touche e est appuyée");
-             document.getElementById('livre3').play();
-            break;
-
-          case 82:
-          if(booleanDoublePress == true){
-              booleanDoublePress = !booleanDoublePress;
-              console.log(booleanDoublePress);
-              console.log("j'ai lancé l'enregistrement");
-          } else {
-              booleanDoublePress = !booleanDoublePress;
-              console.log(booleanDoublePress);
-              console.log("j'ai arrêté l'enregistrement");
-
-          }
-            break;
-          default:
-
-        }
-      }
+  Mousetrap.bind('a', function(e) {
+      console.log("la touche a est appuyée");
+      document.getElementById('livre1').play();
+      return false;
+  });
+  Mousetrap.bind('z', function(e) {
+      console.log("la touche z est appuyée");
+      document.getElementById('livre2').play();
+      return false;
+  });
+  Mousetrap.bind('e', function(e) {
+      console.log("la touche e est appuyée");
+      document.getElementById('livre3').play();
+      return false;
+  });
