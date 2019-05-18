@@ -3,24 +3,56 @@ var booleanDoublePress = true;
 
 console.log(booleanDoublePress);
 
-//Enregistrer et lancer sons
-navigator.mediaDevices.getUserMedia({ audio: true })
-  .then(stream => {
-  MediaRecorder.isTypeSupported("audio/wav;codecs=MS_PCM");
-    const mediaRecorder = new MediaRecorder(stream);
+/////////////////////////////////////////////////Initialisation P5.JS//////////////////////////////////////////////
+var mic, recorder, soundFile;
+var state = 0;
 
-    const audioChunks = [];
-    mediaRecorder.addEventListener("dataavailable", event => {
-      audioChunks.push(event.data);
-    });
+function setup() {
+  background(200);
+  // create an audio in
+  mic = new p5.AudioIn();
 
-    mediaRecorder.addEventListener("stop", () => {
-      const audioBlob = new Blob(audioChunks, { type : 'audio/mpeg-3' });
-     const audioUrl = URL.createObjectURL(audioBlob)
-     const audio = new Audio(audioUrl);
-     audio.play();
-    });
-//Lancer le son quand on appuie sur a,z ou e
+  // prompts user to enable their browser mic
+  mic.start();
+
+  // create a sound recorder
+  recorder = new p5.SoundRecorder();
+
+  // connect the mic to the recorder
+  recorder.setInput(mic);
+
+  // this sound file will be used to
+  // playback & save the recording
+  soundFile = new p5.SoundFile();
+
+  text('keyPress to record', 20, 20);
+}
+
+   Mousetrap.bind('r a', function(){
+      // make sure user enabled the mic
+      if (state === 0 && mic.enabled) {
+
+        // record to our p5.SoundFile
+        recorder.record(soundFile);
+
+        background(255,0,0);
+        text('Recording!', 20, 20);
+        state++;
+      }
+      else if (state === 1) {
+        background(0,255,0);
+
+        // stop recorder and
+        // send result to soundFile
+        recorder.stop();
+
+        text('Stopped', 20, 20);
+        save(soundFile, 'test.wav');
+        state == 0;
+      }
+  })
+
+////////////////////////////////Lancer le son quand on appuie sur a,z ou e/////////////////////////////////////////
       window.onkeyup = function(e) {
         switch (e.keyCode) {
           case 65:
@@ -36,16 +68,13 @@ navigator.mediaDevices.getUserMedia({ audio: true })
              console.log("la touche e est appuyée");
              document.getElementById('livre3').play();
             break;
-//Quand on appuie sur la touche "r" alors l'enregistrement commence
-//Quand on appuie une deuxième fois sur la touche "r", le son s'arrête et se joue
+
           case 82:
           if(booleanDoublePress == true){
-              mediaRecorder.start();
               booleanDoublePress = !booleanDoublePress;
               console.log(booleanDoublePress);
               console.log("j'ai lancé l'enregistrement");
           } else {
-            mediaRecorder.stop();
               booleanDoublePress = !booleanDoublePress;
               console.log(booleanDoublePress);
               console.log("j'ai arrêté l'enregistrement");
@@ -56,4 +85,3 @@ navigator.mediaDevices.getUserMedia({ audio: true })
 
         }
       }
-});
