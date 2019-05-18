@@ -2,15 +2,9 @@
 var booleanDoublePress = true;
 console.log(booleanDoublePress);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Mousetrap.bind('r a', function() {
-                console.log("la touche a,r est appuyée");
-            // return false to prevent default browser behavior
-            // and stop event from bubbling
-            return false;
-    });
 
 
-do{ Mousetrap.bind('a', function(e) {
+ Mousetrap.bind('a', function(e) {
       console.log("la touche a est appuyée");
       document.getElementById('livre1').play();
       return false;
@@ -25,8 +19,7 @@ do{ Mousetrap.bind('a', function(e) {
       document.getElementById('livre3').play();
       return false;
   });
-}
-while (onkeypress== 82 ==false);
+
 
 
 
@@ -79,7 +72,7 @@ function setup() {
         setup();
       }
   })
-  Mousetrap.bind('a', function(e) {
+/*  Mousetrap.bind('a', function(e) {
       console.log("la touche a est appuyée");
       document.getElementById('livre1').play();
       return false;
@@ -93,4 +86,4 @@ function setup() {
       console.log("la touche e est appuyée");
       document.getElementById('livre3').play();
       return false;
-  });
+  });*/
