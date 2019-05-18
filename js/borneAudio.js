@@ -9,8 +9,8 @@ Mousetrap.bind('r a', function() {
             return false;
     });
 
-while(onkeypress== 82 !=true){
-  Mousetrap.bind('a', function(e) {
+
+do{ Mousetrap.bind('a', function(e) {
       console.log("la touche a est appuyée");
       document.getElementById('livre1').play();
       return false;
@@ -26,6 +26,10 @@ while(onkeypress== 82 !=true){
       return false;
   });
 }
+while (onkeypress== 82 ==false);
+
+
+
 /////////////////////////////////////////////////Initialisation P5.JS//////////////////////////////////////////////
 var mic, recorder, soundFile;
 var state = 0;
