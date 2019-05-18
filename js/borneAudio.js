@@ -2,6 +2,13 @@
 var booleanDoublePress = true;
 
 console.log(booleanDoublePress);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Mousetrap.bind('r a', function() {
+                console.log("la touche a,r est appuyée");
+            // return false to prevent default browser behavior
+            // and stop event from bubbling
+            return false;
+    });
 
 /////////////////////////////////////////////////Initialisation P5.JS//////////////////////////////////////////////
 var mic, recorder, soundFile;
