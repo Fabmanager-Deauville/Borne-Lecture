@@ -1,6 +1,5 @@
 // Lancement du son selon la touche du clavier appuyée
 var booleanDoublePress = true;
-
 console.log(booleanDoublePress);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Mousetrap.bind('r a', function() {
@@ -9,6 +8,27 @@ Mousetrap.bind('r a', function() {
             // and stop event from bubbling
             return false;
     });
+
+
+do{ Mousetrap.bind('a', function(e) {
+      console.log("la touche a est appuyée");
+      document.getElementById('livre1').play();
+      return false;
+  });
+  Mousetrap.bind('z', function(e) {
+      console.log("la touche z est appuyée");
+      document.getElementById('livre2').play();
+      return false;
+  });
+  Mousetrap.bind('e', function(e) {
+      console.log("la touche e est appuyée");
+      document.getElementById('livre3').play();
+      return false;
+  });
+}
+while (onkeypress== 82 ==false);
+
+
 
 /////////////////////////////////////////////////Initialisation P5.JS//////////////////////////////////////////////
 var mic, recorder, soundFile;
@@ -59,8 +79,6 @@ function setup() {
         setup();
       }
   })
-////////////////////////////////Lancer le son quand on appuie sur a,z ou e/////////////////////////////////////////
-
   Mousetrap.bind('a', function(e) {
       console.log("la touche a est appuyée");
       document.getElementById('livre1').play();
