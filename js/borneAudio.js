@@ -51,14 +51,10 @@ function setup() {
 
    Mousetrap.bind(['r a', 'r z', 'r e'], function(e){
       // make sure user enabled the mic
-      function preload() {
-        mySound = loadSound('../son/'+key+'Livre.wav');
-      }
       console.log(key);
       if (state === 0 && mic.enabled) {
         // record to our p5.SoundFile
         recorder.record(soundFile);
-
         background(255,0,0);
         text('Recording!', 20, 20);
         state++;
@@ -73,9 +69,11 @@ function setup() {
         text('Stopped', 20, 20);
         //soundFile.play();.save(soundFile);
         save(soundFile, key+'Livre.wav');
-        mySound.play();
+        background(255,0,0);
         state == 0;
-        setup();
+        setTimeout(function(){
+          document.location.reload(true);
+      }, 100)
       }
   })
 /*  Mousetrap.bind('a', function(e) {
