@@ -2,6 +2,10 @@
 var booleanDoublePress = true;
 var booleanR = true;
 console.log(booleanDoublePress);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+ Mousetrap.bind('a', function(e) {
 /////////////////////////////////////Lance l'audio puis recommence depuis le début////////////////////////////////////////////////////////////////////////////
   window.onkeydown = function(e) {
     if (e.keyCode==82){
@@ -26,6 +30,7 @@ if (booleanR == true){
 Mousetrap.bind('a', function(e) {
       console.log("la touche a est appuyée");
       document.getElementById('livre1').play();
+      document.getElementById('livre1').pause();
       return false;
   });
   Mousetrap.bind('z', function(e) {
@@ -38,6 +43,10 @@ Mousetrap.bind('a', function(e) {
       document.getElementById('livre3').play();
       return false;
   });
+
+
+
+
 }
 /////////////////////////////////////////////////Initialisation P5.JS//////////////////////////////////////////////
 var mic, recorder, soundFile;
@@ -70,7 +79,6 @@ function setup() {
       if (state === 0 && mic.enabled) {
         // record to our p5.SoundFile
         recorder.record(soundFile);
-
         background(255,0,0);
         text('Recording!', 20, 20);
         state++;
@@ -83,12 +91,16 @@ function setup() {
         recorder.stop();
 
         text('Stopped', 20, 20);
+        //soundFile.play();.save(soundFile);
         save(soundFile, key+'Livre.wav');
+        background(255,0,0);
         state == 0;
-        setup();
+        setTimeout(function(){
+          document.location.reload(true);
+      }, 100)
       }
   })
-  Mousetrap.bind('a', function(e) {
+/*  Mousetrap.bind('a', function(e) {
       console.log("la touche a est appuyée");
       document.getElementById('livre1').play();
       return false;
@@ -102,4 +114,4 @@ function setup() {
       console.log("la touche e est appuyée");
       document.getElementById('livre3').play();
       return false;
-  });
+  });*/
