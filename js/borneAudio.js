@@ -1,7 +1,19 @@
 // Lancement du son selon la touche du clavier appuyée
 var booleanDoublePress = true;
+var booleanR = true;
 console.log(booleanDoublePress);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  window.onkeydown = function(e) {
+    if (e.keyCode==82){
+      booleanR = false;
+        console.log(booleanR);
+
+    }else {
+      booleanR = true;
+      console.log(booleanR);
+    }
+  }
+
 Mousetrap.bind('r a', function() {
                 console.log("la touche a,r est appuyée");
             // return false to prevent default browser behavior
@@ -10,7 +22,8 @@ Mousetrap.bind('r a', function() {
     });
 
 
-do{ Mousetrap.bind('a', function(e) {
+if (booleanR == true){
+Mousetrap.bind('a', function(e) {
       console.log("la touche a est appuyée");
       document.getElementById('livre1').play();
       return false;
@@ -26,10 +39,6 @@ do{ Mousetrap.bind('a', function(e) {
       return false;
   });
 }
-while (onkeypress== 82 ==false);
-
-
-
 /////////////////////////////////////////////////Initialisation P5.JS//////////////////////////////////////////////
 var mic, recorder, soundFile;
 var state = 0;
