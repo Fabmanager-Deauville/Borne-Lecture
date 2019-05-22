@@ -7,6 +7,7 @@ console.log(booleanDoublePress);
  Mousetrap.bind('a', function(e) {
       console.log("la touche a est appuyée");
       document.getElementById('livre1').play();
+      document.getElementById('livre1').pause();
       return false;
   });
   Mousetrap.bind('z', function(e) {
@@ -50,6 +51,9 @@ function setup() {
 
    Mousetrap.bind(['r a', 'r z', 'r e'], function(e){
       // make sure user enabled the mic
+      function preload() {
+        mySound = loadSound('../son/'+key+'Livre.wav');
+      }
       console.log(key);
       if (state === 0 && mic.enabled) {
         // record to our p5.SoundFile
@@ -67,7 +71,9 @@ function setup() {
         recorder.stop();
 
         text('Stopped', 20, 20);
+        //soundFile.play();.save(soundFile);
         save(soundFile, key+'Livre.wav');
+        mySound.play();
         state == 0;
         setup();
       }
