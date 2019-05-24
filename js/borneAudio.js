@@ -1,23 +1,22 @@
 // Lancement du son selon la touche du clavier appuyée
+var booleanE = true;
 var booleanDoublePress = true;
 var booleanR = true;
+var touchePress;
 console.log(booleanDoublePress);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
- Mousetrap.bind('a', function(e) {
+function startStop(touchePress){
+  if (booleanE == true){
+    document.getElementById(touchePress+'Livre').play();
+       booleanE=!booleanE;
+  }else{
+    document.getElementById(touchePress+'Livre').pause();
+    booleanE=!booleanE;
+    document.getElementById(touchePress+'Livre').currentTime=0;
+    console.log(booleanE);
+}
+}
 /////////////////////////////////////Lance l'audio puis recommence depuis le début////////////////////////////////////////////////////////////////////////////
-  window.onkeydown = function(e) {
-    if (e.keyCode==82){
-      booleanR = false;
-        console.log(booleanR);
-
-    }else {
-      booleanR = true;
-      console.log(booleanR);
-    }
-  }
-
 Mousetrap.bind('r a', function() {
                 console.log("la touche a,r est appuyée");
             // return false to prevent default browser behavior
@@ -25,29 +24,11 @@ Mousetrap.bind('r a', function() {
             return false;
     });
 
-
 if (booleanR == true){
-Mousetrap.bind('a', function(e) {
-      console.log("la touche a est appuyée");
-      document.getElementById('livre1').play();
-      document.getElementById('livre1').pause();
-      return false;
-  });
-  Mousetrap.bind('z', function(e) {
-      console.log("la touche z est appuyée");
-      document.getElementById('livre2').play();
-      return false;
-  });
-  Mousetrap.bind('e', function(e) {
-      console.log("la touche e est appuyée");
-      document.getElementById('livre3').play();
-      return false;
-  });
-
-
-
-
-}
+Mousetrap.bind(['a', 'z', 'e'], function(e) {
+  startStop();
+});
+};
 /////////////////////////////////////////////////Initialisation P5.JS//////////////////////////////////////////////
 var mic, recorder, soundFile;
 var state = 0;
@@ -99,19 +80,4 @@ function setup() {
           document.location.reload(true);
       }, 100)
       }
-  })
-/*  Mousetrap.bind('a', function(e) {
-      console.log("la touche a est appuyée");
-      document.getElementById('livre1').play();
-      return false;
   });
-  Mousetrap.bind('z', function(e) {
-      console.log("la touche z est appuyée");
-      document.getElementById('livre2').play();
-      return false;
-  });
-  Mousetrap.bind('e', function(e) {
-      console.log("la touche e est appuyée");
-      document.getElementById('livre3').play();
-      return false;
-  });*/
