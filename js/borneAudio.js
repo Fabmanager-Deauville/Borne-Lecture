@@ -26,7 +26,7 @@ Mousetrap.bind('r a', function() {
 
 if (booleanR == true){
 Mousetrap.bind(['a', 'z', 'e'], function(e) {
-  startStop();
+  startStop(key);
 });
 };
 /////////////////////////////////////////////////Initialisation P5.JS//////////////////////////////////////////////
