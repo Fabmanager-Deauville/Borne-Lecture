@@ -4,6 +4,26 @@ var booleanDoublePress = true;
 var booleanR = true;
 var touchePress;
 console.log(booleanDoublePress);
+
+var aTab = [];
+console.log('aTab');
+var zTab = [];
+var eTab = [];
+
+var items = [
+  {name :"alivre", value: 21},
+  {name : "zlivre", value: 37},
+  {name : "elivre", value: 45}
+];
+items.sort(function (a, b) {
+  return a.value - b.value;
+});
+console.log(items);
+var nombres = [4, 2, 5, 1, 3];
+nombres.sort(function(a, b) {
+  return a - b;
+});
+console.log(nombres);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function startStop(touchePress){
   if (booleanE == true){
